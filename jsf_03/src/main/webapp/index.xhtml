@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/templates/page-template.xhtml">
+
+	<ui:define name="pageContent">
+
+		<h:messages id="msg" />
+
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+				
+				<h:outputLabel for="idn" value="#{txtCalc.valueN}:" />
+
+				<h:inputText id="idn" value="#{calcBB.n}" required="true"
+					requiredMessage="N: #{txtCalcErr.calcParamRequired}"
+					converterMessage="N: #{txtCalcErr.calcParamIncorrect}" />
+
+				<h:outputLabel for="idi" value="#{txtCalc.valueI}" />
+				
+				<h:inputText id="idi" value="#{calcBB.i}" required="true"
+					requiredMessage="I: #{txtCalcErr.calcParamRequired}"
+					converterMessage="I: #{txtCalcErr.calcParamIncorrect}" />
+					
+				<h:outputLabel for="idr" value="#{txtCalc.valueR}" />
+				
+				<h:inputText id="idr" value="#{calcBB.r}" required="true"
+					requiredMessage="R: #{txtCalcErr.calcParamRequired}"
+					converterMessage="R: #{txtCalcErr.calcParamIncorrect}" />	
+
+				<h:commandButton value="#{txtCalc.add}" action="#{calcBB.calc()}">
+					<f:ajax execute="@form" render="msg" />
+				</h:commandButton>
+				
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>
