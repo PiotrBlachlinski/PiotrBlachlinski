@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<f:metadata>
+    <f:viewAction action="#{carEditBB.onLoad()}" />
+</f:metadata>	
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Driver - Users</title>
+</h:head>
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<h:form>
+
+	<div class="card">
+	<p:linkButton outcome="login" value="Zaloguj się" style="margin-right:20px;"/>
+	<p:commandButton value="Dodaj nową osobę" action="#{userListBB.newUser()}" style="margin-right:20px;" />
+    <p:linkButton outcome="homepage" value="homepage" style="margin-right:20px;"/>
+    <p:linkButton outcome="carList" value="CarList" style="margin-right:20px;"/>
+    <p:linkButton outcome="carListGuest" value="carListGuest" style="margin-right:20px;"/>
+    <p:linkButton outcome="userList" value="UserList" style="margin-right:20px;"/>
+    </div>
+    
+    </h:form>
+    
+	<p:divider />
+
+
+	<p:messages />
+	
+	<p:divider />
+	To jest strona rejestracji
+	<p:divider />
+	
+	<p:panel header="Dodaj/edytuj pojazd">
+	
+	<h:form rendered="#{carEditBB.car != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+
+				<h:outputLabel for="p-manufacturer" value="manufacturer:" />
+				<p:inputText id="p-manufacturer" value="#{carEditBB.car.manufacturer}"
+					required="true" requiredMessage="Podaj markę"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-manufacturer" display="icon"/>
+
+				<h:outputLabel for="p-model" value="Model:" />
+				<p:inputText id="p-model" value="#{carEditBB.car.model}"
+					required="true" requiredMessage="podaj model"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-model" display="icon"/>
+				
+				<h:outputLabel for="p-type" value="Typ:" />
+				<p:inputText id="p-type" value="#{carEditBB.car.type}"
+					required="true" requiredMessage="podaj typ"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-type" display="icon"/>
+				
+				<h:outputLabel for="p-price" value="Cena:" />
+				<p:inputText id="p-price" value="#{carEditBB.car.price}"
+					required="true" requiredMessage="podaj cenę"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-price" display="icon"/>
+				
+				
+			
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{carEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Anuluj" outcome="carList" />
+		</h:form>
+
+	</p:panel>
+	
+</h:body>	
+</html>
