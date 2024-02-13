@@ -20,3 +20,49 @@
   -poprawione guziki nawigacji
   -dodano widok logowania(bez funkcji chwilowo)
 13-Zmiana wyświetlania statusu pojazdu - z numerycznego na tekstowy (poprawne połączenie tabel)
+14-Próba postawienia strony logowania(nieudana)
+15-Logowanie, dalsza walka
+16-Logowanie działa(chwilowo bez przypisania roli i sesji)
+17-Zapas
+18-Próba pobrania roli przy logowaniu, w celu przekierowania (nieudana)
+19-jak wyżej
+
+04.02.2024
+20-Strona wyświetlania listy sesji
+  -Strona wyświetlająca profil użytkownika(dane użytkownika oraz sesje) - template, niekompletna strona
+  -dodanie opcji zmiany roli użytkownika na liście użytkowników
+  -dodanie opcji zmiany statusu pojazdu na liście pojazdów
+21-zapas
+
+06.02.2024
+22-Strona profilu użytkownika, wyświetla dane zalogowanego użytkownika
+  -Strona profilu użytkownika, wyświetla listę historii sesji zalogowanego użytkownika 
+  -Logowanie pobiera nazwę roli
+23-Logowanie przekierowuje do odpowiedniego widoku/odpowiedniej strony, zależnie od roli zalogowanego użytkownika
+
+07.02.2024
+24-Próba utworzenia sesji i przypisania do niej ID zalogowanego użytkownika
+
+08.02.2024
+25-Utworzona lista pojazdów do wypożyczenia dla użytkowników
+  -Wyświetla tylko dostępne pojazdy //uniemożliwia to zakup/wypożyczenie pojzadu który już wypożyczono
+
+09.02.2024
+26-Działające zapisywanie i pobierani danych w ramach sesji
+
+10.02.2024
+27-Przycisk "wypożycz" na liście pojazdów dla użytkownika
+  -Wybranie pojazdu i naciśnięcie przycisku, przekierowuje na nową stronę tworzenia sesji
+  -Strona tworzenia sesji utworzona - chwilowo wizualne podstawy. Przejmuje dane pojazdu z listy pojazdów dla użytkownika
+
+11.02.2024
+28-Strona tworzenia sesij, pobiera ID zalogowanego użytkownika
+  -Strona tworzenia sesij, tworzy w bazie nową sesję
+  -Po stworzeniu sesji, status wypożyczonego pojazdu zmienia się na "wypożyczony"
+
+29-Strona profilu użytkownika, wyświetla dane zalogowanego użytkownika oraz jego sesje (poprzez pobranie ID z sesji)
+
+12.02.2024
+30-poprawione przekierowania - zależne teraz od zalogowanej roli
+
+
