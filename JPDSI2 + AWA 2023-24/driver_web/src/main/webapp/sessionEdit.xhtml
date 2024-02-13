@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
 <f:metadata>
-    <f:viewAction action="#{carEditBB.onLoad()}" />
+    <f:viewAction action="#{sessionEditBB.onLoad()}" />
 </f:metadata>	
 
 <h:head>
@@ -22,8 +22,9 @@
 	
 	<p:commandButton value="Wyloguj" action="#{loginBB.doLogout()}" style="margin-right:20px;" />
 	
-    <p:linkButton outcome="carList" value="carList" style="margin-right:20px;"/>
+    <p:linkButton outcome="carListUser" value="carListUser" style="margin-right:20px;"/>
     
+    <p:linkButton outcome="profile" value="Profil" style="margin-right:20px;"/>
     </div>
     
     </h:form>
@@ -34,44 +35,35 @@
 	<p:messages />
 	
 	<p:divider />
-	To jest strona rejestracji / edycji pojazdu
+	To jest strona tworzenia sesji
 	<p:divider />
 	
 	<p:panel header="Dodaj/edytuj pojazd">
 	
-	<h:form rendered="#{carEditBB.car != null}">
+	<h:form rendered="#{sessionEditBB.car != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-
-				<h:outputLabel for="p-manufacturer" value="manufacturer:" />
-				<p:inputText id="p-manufacturer" value="#{carEditBB.car.manufacturer}"
-					required="true" requiredMessage="Podaj markę"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<h:outputLabel for="p-manufacturer" value="Marka:" />
+				<p:inputText id="p-manufacturer" value="#{sessionEditBB.car.manufacturer}"
+					disabled="true">
 				</p:inputText>
 				<p:message for="p-manufacturer" display="icon"/>
 
 				<h:outputLabel for="p-model" value="Model:" />
-				<p:inputText id="p-model" value="#{carEditBB.car.model}"
-					required="true" requiredMessage="podaj model"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<p:inputText id="p-model" value="#{sessionEditBB.car.model}"
+					disabled="true">
 				</p:inputText>
 				<p:message for="p-model" display="icon"/>
 				
 				<h:outputLabel for="p-type" value="Typ:" />
-				<p:inputText id="p-type" value="#{carEditBB.car.type}"
-					required="true" requiredMessage="podaj typ"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<p:inputText id="p-type" value="#{sessionEditBB.car.type}"
+					disabled="true">
 				</p:inputText>
 				<p:message for="p-type" display="icon"/>
 				
 				<h:outputLabel for="p-price" value="Cena:" />
-				<p:inputText id="p-price" value="#{carEditBB.car.price}"
-					required="true" requiredMessage="podaj cenę"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<p:inputText id="p-price" value="#{sessionEditBB.car.price}"
+					disabled="true">
 				</p:inputText>
 				<p:message for="p-price" display="icon"/>				
 				
@@ -80,10 +72,10 @@
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{carEditBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{sessionEditBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="carList" />
+			<p:button value="Anuluj" outcome="carListUser" />
 		</h:form>
 
 	</p:panel>

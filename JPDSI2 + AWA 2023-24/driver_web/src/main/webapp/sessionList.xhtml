@@ -31,77 +31,61 @@
 	<p:messages />
 	
 	<p:divider />
-	To jest strona dla listy uzytkowników
-	<br/>
-	
+	To jest strona dla listy sesji
 	<p:divider />
 	
 		<h:form id="form-table" style="margin-bottom:1em;">
-		
-		<!--  
-		<p:commandButton value="Dodaj nową osobę"
-			action="#{userListBB.newUser()}" style="margin-bottom:1em;" />
-		-->
-		
-		<p:dataTable value="#{userListBB.list}" var="p" rows="10"
+
+		<p:dataTable value="#{sessionListBB.list}" var="p" rows="10"
 			paginator="true" paginatorPosition="both"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
             currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
             rowsPerPageTemplate="5,10,20,{ShowAll|'All'}">
 		
 			
-			<p:column headerText="ID">
-				<h:outputText value="#{p.iduser}" />
+			<p:column headerText="ID sesji">
+				<h:outputText value="#{p.idsession}" />
 			</p:column>
 			
-			<p:column headerText="Name">
-				<h:outputText value="#{p.name}" />
+			<p:column headerText="Imię">
+				<h:outputText value="#{p.userBean.name}" />
+			</p:column>
+			
+			<p:column headerText="Nazwisko">
+				<h:outputText value="#{p.userBean.surname}" />
+			</p:column>
+			
+			<p:column headerText="Username">
+				<h:outputText value="#{p.userBean.username}" />
 			</p:column>
 
-			<p:column headerText="Surname">
-				<h:outputText value="#{p.surname}" />
+			<p:column headerText="Kierowca">
+				<h:outputText value="#{p.driverBean}" />
 			</p:column>
 
-			<p:column headerText="Address">
-				<h:outputText value="#{p.address}" />
+			<p:column headerText="Pojazd Marka">
+				<h:outputText value="#{p.carBean.manufacturer}" />
 			</p:column>
 			
-			<p:column headerText="Rola">
-				<h:outputText value="#{p.role}" />
+			<p:column headerText="Pojazd model">
+				<h:outputText value="#{p.carBean.model}" />
 			</p:column>
 			
-			<!--  
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="opcje" />
-				</f:facet>
+			<p:column headerText="Pojazd typ">
+				<h:outputText value="#{p.carBean.type}" />
+			</p:column>
+			
+			<p:column headerText="Pojazd cena">
+				<h:outputText value="#{p.carBean.price}" />
+			</p:column>
+			
+			<p:column headerText="data">
+				<h:outputText value="#{p.date}" />
+			</p:column>
+			
+			
+			
 
-				<p:commandButton value="Edytuj"
-					action="#{userListBB.editUser(p)}" />
-			</p:column>
-			-->
-			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="nadaj rolę" />
-				</f:facet>
-				
-				<p:commandButton value="user"
-					action="#{userListBB.setRoleUser(p)}" />
-
-				<p:commandButton value="admin"
-					action="#{userListBB.setRoleAdmin(p)}" />
-					
-				<p:commandButton value="driver"
-					action="#{userListBB.setRoleDriver(p)}" />
-					
-				<p:commandButton value="worker"
-					action="#{userListBB.setRoleWorker(p)}" />
-							
-				<p:commandButton value="blocked"
-					action="#{userListBB.setRoleBlocked(p)}" />
-			
-			</p:column>
 
 		</p:dataTable>
 	</h:form>

@@ -9,6 +9,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
 import driver.jsf.entities.Car;
+import driver.jsf.entities.Status;
 
 
 @Stateless
@@ -19,6 +20,8 @@ public class CarDAO {
 	@PersistenceContext(unitName = UNIT_NAME)
 	protected EntityManager em;
 	
+	//private Integer status = 1;
+	private String status = "available";
 	
 	public void create(Car car) {
 		em.persist(car);
@@ -79,6 +82,35 @@ public class CarDAO {
 		if (manufacturer != null) {
 			query.setParameter("manufacturer", manufacturer+"%");
 		}
+
+		// ... other parameters ... 
+
+		// 4. Execute query and retrieve list of Person objects
+		try {
+			list = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	/////////////
+	
+	public List<Car> getListUser(Map<String, Object> searchParams) {
+		
+		List<Car> list = null;
+
+		Query query = em.createQuery(
+				"SELECT p"
+				+ " FROM Car p "
+				+ "WHERE p.status.statusname = :status")
+		.setParameter("status", status);
+		
+		// 3. Set configured parameters
+//		if (manufacturer != null) {
+//			query.setParameter("manufacturer", manufacturer+"%");
+//		}
 
 		// ... other parameters ... 
 

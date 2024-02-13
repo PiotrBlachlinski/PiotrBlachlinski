@@ -21,9 +21,9 @@ import driver.jsf.entities.User;
 
 @Named
 @RequestScoped
-public class CarListBB {
-	private static final String PAGE_CAR_EDIT = "carEdit?faces-redirect=true";
-	private static final String PAGE_CARLIST = "carList?faces-redirect=true";
+public class CarListUserBB {
+	private static final String PAGE_SESSION_CREATE = "sessionEdit?faces-redirect=true";
+	private static final String PAGE_CARLIST = "carListUser?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 	
 	private String manufacturer;
@@ -59,12 +59,13 @@ public class CarListBB {
 		//1. Prepare search params
 		Map<String,Object> searchParams = new HashMap<String, Object>();
 		
-		if (manufacturer != null && manufacturer.length() > 0){
-			searchParams.put("manufacturer", manufacturer);
-		}
+//		if (manufacturer != null && manufacturer.length() > 0){
+//			searchParams.put("manufacturer", manufacturer);
+//		}
+		
 		
 		//2. Get list
-		list = carDAO.getList(searchParams);
+		list = carDAO.getListUser(searchParams);
 		
 		return list;
 	}
@@ -79,7 +80,7 @@ public class CarListBB {
 		//2. Pass object through flash	
 		flash.put("car", car);
 		
-		return PAGE_CAR_EDIT;
+		return PAGE_SESSION_CREATE;
 	}
 
 	public String editCar(Car car){
@@ -90,56 +91,10 @@ public class CarListBB {
 		//2. Pass object through flash 
 		flash.put("car", car);
 		
-		return PAGE_CAR_EDIT;
+		return PAGE_SESSION_CREATE;
 	}
 
-	public String deleteCar(Car car){
-		carDAO.remove(car);
-		return PAGE_STAY_AT_THE_SAME;
-	}
-	
-	
-	public String setStatusAvailable(Car car){
-		car.setStatus(statusDAO.find(1));
-		carDAO.merge(car);
-		return PAGE_CARLIST;
-	}
-	
-	public String setStatusRented(Car car){
-		car.setStatus(statusDAO.find(2));
-		carDAO.merge(car);
-		return PAGE_CARLIST;
-	}
-	
-	public String setStatusCanceled(Car car){
-		car.setStatus(statusDAO.find(3));
-		carDAO.merge(car);
-		return PAGE_CARLIST;
-	}
-	
-	public String setStatusMeintenence(Car car){
-		car.setStatus(statusDAO.find(4));
-		carDAO.merge(car);
-		return PAGE_CARLIST;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 }

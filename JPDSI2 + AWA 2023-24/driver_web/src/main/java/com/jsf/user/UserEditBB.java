@@ -22,7 +22,7 @@ import driver.jsf.entities.User;
 public class UserEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_USER_LIST = "userList?faces-redirect=true";
+	private static final String PAGE_USER_LIST = "homepage?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private User user = new User();
@@ -84,6 +84,31 @@ public class UserEditBB implements Serializable {
 				userDAO.create(user);
 			} else {
 				// existing record
+				user.setMdate(new Date());
+				userDAO.merge(user);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
+
+		return PAGE_USER_LIST;
+	}
+	
+	public String setRoleAdmin() {
+		// no User object passed
+		if (loaded == null) {
+			return PAGE_STAY_AT_THE_SAME;
+		}
+
+		try {
+			if (user.getIduser() == null) {
+
+			} else {
+				// existing record
+				user.setRole(roleDAO.find(2));
 				user.setMdate(new Date());
 				userDAO.merge(user);
 			}

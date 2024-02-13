@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Driver - Users</title>
+</h:head>
+<h:body style="background-color: #eee; margin: 0.5em;">
+	
+	<h:form>
+
+	<div class="card">
+	
+	<p:commandButton value="Wyloguj" action="#{loginBB.doLogout()}" style="margin-right:20px;" />
+
+   
+   
+    <p:linkButton outcome="carListUser" value="carListUser" style="margin-right:20px;"/>
+  
+
+  
+    <p:linkButton outcome="profile" value="Profil" style="margin-right:20px;"/>
+    </div>
+    
+    </h:form>
+    
+	<p:divider />
+	<p:panel header="Opcje wyszukiwania" toggleable="false" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			
+		</h:form>
+	</p:panel>
+
+	<p:messages />
+	
+	<p:divider />
+	To jest strona profilu uzytkownika
+	<p:divider />
+	
+		<h:form id="form-table1" style="margin-bottom:1em;">
+		
+		
+
+		<p:dataTable value="#{profileBB.list}" var="p" rows="5">
+		
+			<p:column headerText="ID">
+				<h:outputText value="#{p.iduser}" />
+			</p:column>
+			<!-- W przyszłości usunąć z wyświetlania, pole ID
+			Tylko do celów testów. Nie ma konieczności wyświetlania
+			dla uzytkownika-->
+
+			
+			<p:column headerText="Name">
+				<h:outputText value="#{p.name}" />
+			</p:column>
+
+			<p:column headerText="Surname">
+				<h:outputText value="#{p.surname}" />
+			</p:column>
+			
+			<p:column headerText="Username">
+				<h:outputText value="#{p.username}" />
+			</p:column>
+
+			<p:column headerText="Address">
+				<h:outputText value="#{p.address}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{userListBB.editUser(p)}" />
+
+			
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	
+	
+	
+	<h:form id="form-table2" style="margin-bottom:1em;">
+
+		<p:dataTable value="#{profileBB.list2}" var="p" rows="10"
+			paginator="true" paginatorPosition="both"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+            currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+            rowsPerPageTemplate="5,10,20,{ShowAll|'All'}">
+		
+			
+			<p:column headerText="ID sesji">
+				<h:outputText value="#{p.idsession}" />
+			</p:column>
+			
+			<p:column headerText="Imię">
+				<h:outputText value="#{p.userBean.name}" />
+			</p:column>
+			
+			<p:column headerText="Nazwisko">
+				<h:outputText value="#{p.userBean.surname}" />
+			</p:column>
+			
+			<p:column headerText="Username">
+				<h:outputText value="#{p.userBean.username}" />
+			</p:column>
+
+			<p:column headerText="Kierowca">
+				<h:outputText value="#{p.driverBean}" />
+			</p:column>
+
+			<p:column headerText="Pojazd Marka">
+				<h:outputText value="#{p.carBean.manufacturer}" />
+			</p:column>
+			
+			<p:column headerText="Pojazd model">
+				<h:outputText value="#{p.carBean.model}" />
+			</p:column>
+			
+			<p:column headerText="Pojazd typ">
+				<h:outputText value="#{p.carBean.type}" />
+			</p:column>
+			
+			<p:column headerText="Pojazd cena">
+				<h:outputText value="#{p.carBean.price}" />
+			</p:column>
+			
+			<p:column headerText="data">
+				<h:outputText value="#{p.date}" />
+			</p:column>
+			
+			
+			
+
+
+		</p:dataTable>
+	</h:form>
+	
+	
+	
+	
+
+</h:body>
+</html>

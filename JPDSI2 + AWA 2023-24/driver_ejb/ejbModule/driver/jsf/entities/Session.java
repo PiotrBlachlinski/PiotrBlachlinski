@@ -17,7 +17,7 @@ public class Session implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idsession;
+	private Integer idsession;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -40,11 +40,11 @@ public class Session implements Serializable {
 	public Session() {
 	}
 
-	public int getIdsession() {
+	public Integer getIdsession() {
 		return this.idsession;
 	}
 
-	public void setIdsession(int idsession) {
+	public void setIdsession(Integer idsession) {
 		this.idsession = idsession;
 	}
 

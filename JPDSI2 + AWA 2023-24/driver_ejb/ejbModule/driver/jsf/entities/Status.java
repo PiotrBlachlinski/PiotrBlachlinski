@@ -17,7 +17,7 @@ public class Status implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idstatus;
+	private Integer idstatus;
 
 	@Temporal(TemporalType.DATE)
 	private Date cdate;
@@ -34,11 +34,11 @@ public class Status implements Serializable {
 	public Status() {
 	}
 
-	public int getIdstatus() {
+	public Integer getIdstatus() {
 		return this.idstatus;
 	}
 
-	public void setIdstatus(int idstatus) {
+	public void setIdstatus(Integer idstatus) {
 		this.idstatus = idstatus;
 	}
 
